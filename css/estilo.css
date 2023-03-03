@@ -1,0 +1,15 @@
+#parrafo1{
+    text-align: center;
+    color:rgb(165, 42, 42);
+}
+h3, h5{
+    color:darkblue;
+    text-align: center;
+}
+body{
+    background-color: cornsilk;
+}
+.center {
+    color: crimson;
+    text-align: right;
+}

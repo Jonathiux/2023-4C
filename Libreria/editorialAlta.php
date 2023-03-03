@@ -1,0 +1,61 @@
+<?php
+/*
+include 'loginSecurity.php';
+if ($_SESSION['privilegios'] != 'admin') {
+    header('location: index.php');
+}
+*/
+?>
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Librería Café Libro</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Equipo de Desarrollo BPEJ">
+        <!--bootstrap-->
+        <link rel="stylesheet" href="css/bootstrap.css">
+
+
+
+    </head>
+    <body>
+        <?php
+            include_once 'barraMenu.php';
+            $menu = new menu();
+            $menu ->barraMenu();
+        ?>
+        <div class="container">
+          <div class="page-header">
+              <br>
+              <h3 style="text-align: center">Captura Nueva Editorial</h3>
+          </div>
+            <form class="form-horizontal" action="aplicarMovimiento.php" method="post" onsubmit="return confirm('¿Seguro que quieres guardar este formulario?');">
+            <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" required>
+            </div>
+            <div class="mb-3">
+                <label for="rfc" class="form-label">RFC</label>
+                <input type="text" class="form-control" id="rfc" name="rfc" placeholder="RFC" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" required>
+            </div>
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" name="editorialAlta">Guardar</button>
+                <a class="btn btn-danger" href="index.php" role="button">Regresar</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <script src="js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
