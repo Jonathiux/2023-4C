@@ -20,7 +20,7 @@ $menu = new menu();
 $menu->barraMenu();
 include_once 'Producto.php';
 $producto = new Producto();
-$producto->setIdProducto($_GET['IdProducto']);
+$producto->setIdProducto($_GET['id']);
 $producto->ProductoModificar();
 ?>
 <div class="container">

@@ -2,7 +2,7 @@
 <?php
 
 
-//include 'loginSecurity.php';
+include 'loginSecurity.php';
 /*
 if ($_SESSION['privilegios'] != 'Administrador' and $_SESSION['privilegios'] != 'Finanzas' and $_SESSION['privilegios'] != 'Dirección') {
     header('location: index.php');
@@ -11,7 +11,7 @@ if ($_SESSION['privilegios'] != 'Administrador' and $_SESSION['privilegios'] != 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>BPEJ. Sistema Integral de Gestión</title>
+    <title>Librería</title>
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="YO">

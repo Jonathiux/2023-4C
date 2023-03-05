@@ -73,13 +73,7 @@ class editorial {
         '".$this->getDireccion()."',
         '".$this->getRFC()."',
         '".$this->getTelefono()."');");
-/*
-        echo "INSERT INTO editorial (nombre,
-        direccion, RFC, telefono) VALUES ('".$this->getNombre()."',
-        '".$this->getDireccion()."',
-        '".$this->getRFC()."',
-        '".$this->getTelefono()."');";
-*/
+
         $query->execute();
 
            }
@@ -155,7 +149,7 @@ class editorial {
         $resultado = $query->fetchAll();
         
         foreach ($resultado as $key => $value) {
-        $modificar='<a href="editorialModificar.php.old?id='.$value['id'].'" class="btn btn-primary">Modificar</a>';
+        $modificar='<a href="editorialModificar.php?id='.$value['id'].'" class="btn btn-primary">Modificar</a>';
           $editorial[$key] = array(
                 $value['id'],
                 $value['nombre'],  
@@ -167,7 +161,7 @@ class editorial {
         }
  
         return $editorial;
-  
+
     }
 
 

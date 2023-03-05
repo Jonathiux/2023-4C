@@ -49,6 +49,7 @@ if($usuario=='' || $password==''){
             }///Fin del foreach
         }
 
+
     }catch(PDOException $ex){
         echo 'Error: '.$ex->getMessage();
     }

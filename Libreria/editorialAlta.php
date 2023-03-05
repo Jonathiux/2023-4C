@@ -1,10 +1,10 @@
 <?php
-/*
+
 include 'loginSecurity.php';
 if ($_SESSION['privilegios'] != 'admin') {
     header('location: index.php');
 }
-*/
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

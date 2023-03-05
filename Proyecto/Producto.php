@@ -107,8 +107,8 @@ class Producto
             $result = $query->fetchAll();
             foreach ($result as $value) {
                 $this->setidProducto($value['idProducto']);
-                $this->setNombre($value['nombre']);
                 $this->setIdCat($value['idCat']);
+                $this->setNombre($value['nombre']);
                 $this->setDescripcion($value['descripcion']);
                 $this->setCantidad($value['cantidad']);
                 $this->setPrecio($value['precio']);
@@ -143,6 +143,32 @@ class Producto
         }
 
         $pdo = null;
+
+    }
+
+    function ProductoConsulta() {
+
+        $pdo = new Conexion();
+        $query = $pdo->prepare('SELECT * FROM Producto WHERE activo=1;');
+        $query->execute();
+        
+        
+        $resultado = $query->fetchAll();
+        
+        foreach ($resultado as $key => $value) {
+        $modificar='<a href="ProductoModificar.php?id='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>';
+          $editorial[$key] = array(
+                $value['idProducto'],
+                $value['idCat'],  
+                $value['nombre'],
+                $value['descripcion'],
+                $value['precio'],
+                $value['cantidad'],
+                $modificar
+            );
+        }
+ 
+        return $editorial;
 
     }
 

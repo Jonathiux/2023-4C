@@ -174,7 +174,7 @@ class libro {
     }
     function libroConsultaCarrito() {
         $pdo = new Conexion();
-        $query = $pdo->prepare('SELECT * FROM vs_libros2 ;');
+        $query = $pdo->prepare('SELECT * FROM vs_libros2 WHERE activo=1;');
         $query->execute();
 
         $resultado = $query->fetchAll();

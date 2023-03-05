@@ -3,8 +3,8 @@
 include_once 'conexion.php';
 
 class pago{
-    private $IdCliente;
-    private $IdLibro;
+    private $cliente_id;
+    private $libro_id;
     private $titulo;
     private $nombre;
     private $descripcion;
@@ -14,33 +14,33 @@ class pago{
     /**
      * @return mixed
      */
-    public function getIdCliente()
+    public function getClienteId()
     {
-        return $this->IdCliente;
+        return $this->cliente_id;
     }
 
     /**
      * @param mixed $IdCliente
      */
-    public function setIdCliente($IdCliente)
+    public function setClienteId($cliente_id)
     {
-        $this->IdCliente = $IdCliente;
+        $this->cliente_id = $cliente_id;
     }
 
     /**
      * @return mixed
      */
-    public function getIdLibro()
+    public function getLibroId()
     {
-        return $this->IdLibro;
+        return $this->libro_id;
     }
 
     /**
      * @param mixed $IdLibro
      */
-    public function setIdLibro($IdLibro)
+    public function setLibroId($libro_id)
     {
-        $this->IdLibro = $IdLibro;
+        $this->libro_id = $libro_id;
     }
 
     /**
@@ -124,25 +124,26 @@ class pago{
     }
     public function procesarPago(){
         $pdo = new Conexion();
-        $query = $pdo->prepare('SELECT * FROM vs_pago WHERE activo=1 AND IdCliente=:IdCliente');
-        $query->bindValue(':IdCliente', $this->getIdCliente());
+        $query = $pdo->prepare('SELECT * FROM vs_pago WHERE activo=1 AND cliente_id=:cliente_id');
+        $query->bindValue(':cliente_id', $this->getClienteId());
         $query->execute();
         $resultado = $query->fetchAll();
         foreach($resultado as $key => $value) {
         $subtotal = $value['precio'] * $value['cantidad'];
-        $eliminar = '<a href="#modal'.$value['IdCarrito'].'" role="button" class="btn btn-danger"
-               data-toggle="modal">Quitar</a>';
+
+        $eliminar = '<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal'.$value['id'].'">
+                Quitar</button>';
         $precio = number_format($value['precio'], 2, '.',',');
         $subtotalFormato = number_format($subtotal, 2, '.',',');
         $items[$key] = array(
-                $value['IdCarrito'],
-                $value['IdLibro'],
+                $value['id'],
+                $value['libro_id'],
                 $value['titulo'],
                 $value['nombre'],
                 $value['descripcion'],
                 '$ '.$precio,
                 $value['cantidad'],
-                $subtotal,
+            $subtotalFormato,
                 $eliminar
             );
         }

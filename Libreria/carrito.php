@@ -32,17 +32,11 @@ class carrito {
         return $this->cliente_id;
     }
 
-    /**
-     * @param mixed $IdCliente
-     */
     public function setClienteId($cliente_id)
     {
         $this->cliente_id = $cliente_id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getLibroId()
     {
         return $this->libro_id;
@@ -73,9 +67,9 @@ class carrito {
     }
     public function altaCarrito(){
         $pdo = new Conexion();
-        $query = $pdo->prepare('INSERT INTO carrito(cliente_id, libro_id, cantidad) VALUES (:cliente_id, :libro_id, :cantidad);');
-        $query->bindValue(':cliente_id', $this->getClienteId());
-        $query->bindValue(':libro_id', $this->getLibroId());
+        $query = $pdo->prepare('INSERT INTO carrito(cliente_id, libro_id, cantidad) VALUES (:ClienteId, :LibroId, :cantidad);');
+        $query->bindValue(':ClienteId', $this->getClienteId());
+        $query->bindValue(':LibroId', $this->getLibroId());
         $query->bindValue(':cantidad', $this->getCantidad());
         $query->execute();
 
@@ -83,9 +77,9 @@ class carrito {
     }
     public function bajaCarrito(){
         $pdo = new Conexion();
-        $query = $pdo->prepare('UPDATE carrito SET activo=:activo WHERE id=:IdCarrito;');
+        $query = $pdo->prepare('UPDATE carrito SET activo=:activo WHERE id=:carrito_id;');
         $query->bindValue(':activo', 0);
-        $query->bindValue(':IdCarrito', $this->getId());
+        $query->bindValue(':carrito_id', $this->getId());
         $query->execute();
 
         $pdo = null;

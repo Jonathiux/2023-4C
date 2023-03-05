@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php
-//include 'loginSecurity.php';
-/*if ($_SESSION['privilegios'] != 'admin') {
+/*include 'loginSecurity.php';
+if ($_SESSION['privilegios'] != 'admin') {
     header('location: index.php');
-}*/
-
+}
+*/
 include_once 'editorial.php';
 $editorial = new editorial();
 
@@ -69,7 +69,7 @@ $editorial = new editorial();
                 var t = 'Listado de Cuentas';
                 $('#dtPlantilla').DataTable( {
                     "data": arregloDT,
-                    "order": [[ 0, "asc" ]],
+                    "order": [[ 0, "desc" ]],
                     responsive: true,
                     "language": {
                         "sProcessing": "Procesando...",
