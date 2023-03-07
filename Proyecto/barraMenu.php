@@ -4,7 +4,7 @@ class menu {
         ?>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.php">
                     <img src="imgs/Pacman.png" alt="Logo" width="35" height="45" class="d-inline-block">
                     GamesPro
                 </a>
@@ -14,7 +14,7 @@ class menu {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Recomendaciones</a>
@@ -26,7 +26,7 @@ class menu {
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="ProductoAlta.php">Producto Alta</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="">Producto Consulta</a></li>
+                                <li><a class="dropdown-item" href="ProductoConsulta.php">Producto Consulta</a></li>
                                 <?php
                                 /* if ($_SESSION['privilegios'] == 'Administrador')
                                  {
