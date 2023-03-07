@@ -13,7 +13,7 @@
 
 
 </head>
-<body>
+<body Style="background-color: #fddc84;">
 <?php
 include_once 'barraMenu.php';
 $menu = new menu();

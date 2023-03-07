@@ -45,8 +45,24 @@ if (isset($_POST['ProductoAlta']))//Valida si se envía el formulario
 
     <div class="container">
         <br>
-        <a href="areaAlta.php" class="btn btn-default">Crear nuevo Registro</a>
-        <a href="index.php" class="btn btn-default">Salir</a></center>
+        <h3 style="text-align: center">Producto agregado con éxito!</h3>
+        <div class="text-center">
+            <img src="imgs/Pacman.png" class="rounded" alt="" width="200px" height="200px">
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2">
+            </div>
+        <div class="col-3">
+        <a href="ProductoAlta.php" class="btn btn-success">Crear nuevo Registro</a>
+        </div>
+        <div class="col-3">
+        <a href="ProductoConsulta.php" class="btn btn-success">Consultar Productos</a>
+        </div>
+        <div class="col-4">
+        <a href="index.php" class="btn btn-danger">Salir</a></center>
+        </div>
+        </div>
     </div>
     <?php
 }
@@ -90,3 +106,48 @@ $producto->ProductoModificarGuardar();
 </div>
 <?php
 }
+elseif (isset($_POST['usuarioAlta']))//Valida si se envía el formulario
+{
+
+    include_once 'usuario.php';
+    $usuario = new usuario();
+    $usuario->setNombre($_POST['firstname']." ".$_POST['lastname']);
+    $usuario->setUsuario($_POST['usuario']);
+    $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $usuario->setPassword($hashed_password);
+    $usuario->setPrivilegios('General');
+    $usuario->usuarioAlta();
+
+
+    ?>
+    <div class="container">
+        <br>
+        <center><a href="areaConsulta.php?m=M" class="btn btn-default">Regresar</a>
+            <a href="index.php" class="btn btn-default">Salir</a></center>
+    </div>
+    <?php
+}
+elseif (isset($_POST['agregarCarrito']))//Valida si se envía el formulario
+{
+
+    include_once 'carrito.php';
+    $carrito = new carrito();
+    $carrito->setLibroId($_POST['libro_id']);
+    $carrito->setClienteId($_POST['usuario_id']);
+    $carrito->setCantidad($_POST['cantidad']);
+    $carrito->altaCarrito();
+
+
+    ?>
+    <div class="container">
+        <hr>
+        <p><i class="far fa-check-circle"></i></p>
+        <h3 align="center">El registro se guardo exitosamente</h3>
+        <p align="center"><br>
+            <a href="venta.php" class="btn btn-primary">Seleccionar otro Artículo</a>
+            <a href="pagar.php" class="btn btn-success">Pagar</a></center>
+        </p>
+    </div>
+    <?php
+}
+?>

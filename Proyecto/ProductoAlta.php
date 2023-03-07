@@ -10,10 +10,10 @@
     <meta name="author" content="Jonathan Alberto López">
     <!--bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fondo.css">
+    
 
 </head>
-<body id="fondo">
+<body Style="background-color: #fddc84;">
 <?php
 include_once 'barraMenu.php';
 $menu = new menu();
@@ -55,7 +55,7 @@ $menu->barraMenu();
         </div>
         <br>
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success" name="ProductoAlta">Guardar</button>
+            <button type="submit" class="btn btn-success" href="ProductoConsulta.php" name="ProductoAlta">Guardar</button>
             <a class="btn btn-danger" href="index.php" role="button">Regresar</a>
         </div>
 

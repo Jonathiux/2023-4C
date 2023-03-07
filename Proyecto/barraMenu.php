@@ -5,7 +5,7 @@ class menu {
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="imgs/Pacman.png" alt="Logo" width="25" height="35" class="d-inline-block">
+                    <img src="imgs/Pacman.png" alt="Logo" width="35" height="45" class="d-inline-block">
                     GamesPro
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -157,7 +157,6 @@ class Producto
         
         foreach ($resultado as $key => $value) {
         $modificar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>';
-        $eliminar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-danger">Modificar</a>';
           $Producto[$key] = array(
                 $value['idProducto'],
                 $value['idCat'],  
@@ -166,7 +165,6 @@ class Producto
                 $value['precio'],
                 $value['cantidad'],
                 $modificar
-                $eliminar
             );
         }
  
