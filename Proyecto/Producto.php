@@ -156,8 +156,9 @@ class Producto
         $resultado = $query->fetchAll();
         
         foreach ($resultado as $key => $value) {
-        $modificar='<a href="ProductoModificar.php?id='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>';
-          $editorial[$key] = array(
+        $modificar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>';
+        $eliminar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-danger">Modificar</a>';
+          $Producto[$key] = array(
                 $value['idProducto'],
                 $value['idCat'],  
                 $value['nombre'],
@@ -165,10 +166,11 @@ class Producto
                 $value['precio'],
                 $value['cantidad'],
                 $modificar
+                $eliminar
             );
         }
  
-        return $editorial;
+        return $Producto;
 
     }
 
