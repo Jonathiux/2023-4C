@@ -156,7 +156,8 @@ class Producto
         $resultado = $query->fetchAll();
         
         foreach ($resultado as $key => $value) {
-        $modificar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>';
+        $modificar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>'.
+        '<a href="agregarCarrito.php?idProducto='.$value['idProducto'].'" class="btn btn-primary m-s-1">Agregar Carrito</a>';
           $Producto[$key] = array(
                 $value['idProducto'],
                 $value['idCat'],  
@@ -172,6 +173,30 @@ class Producto
 
     }
 
+    function ProductoInfo()
+    {
+        $pdo = new Conexion();
+        $query = $pdo->prepare("SELECT * FROM Producto WHERE idProducto=".$this->getId().";");
+        $query->execute();
+        
+        
+        $resultado = $query->fetchAll();
+        
+        foreach ($resultado as $key => $value) {
+        $modificar='<a href="ProductoModificar.php?idProducto='.$value['idProducto'].'" class="btn btn-primary">Modificar</a>';
+          $Producto[$key] = array(
+                $value['idProducto'],
+                $value['idCat'],  
+                $value['nombre'],
+                $value['descripcion'],
+                $value['precio'],
+                $value['cantidad'],
+                $modificar
+            );
+        }
+ 
+        return $Producto;
+    }
 }
 
 

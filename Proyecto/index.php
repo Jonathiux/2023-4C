@@ -13,7 +13,7 @@
 
 
 </head>
-<body Style="background-color: #fddc84;">
+<body Style="background-color: #2e2e2e;">
 <?php
 include_once 'barraMenu.php';
 $menu = new menu();
@@ -22,13 +22,13 @@ $menu->barraMenu();
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="imgs/AT.png" class="d-block w-100" alt="..." height="500px">
+      <img src="imgs/AT.png" class="d-block w-100" alt="..." height="700px">
     </div>
     <div class="carousel-item">
-      <img src="imgs/tmb.jpg" class="d-block w-100" alt="" height="500px">
+      <img src="imgs/tmb.jpg" class="d-block w-100" alt="" height="700px">
     </div>
     <div class="carousel-item">
-      <img src="imgs/halo.jpg" class="d-block w-100" alt="..." height="500px">
+      <img src="imgs/halo.jpg" class="d-block w-100" alt="..." height="700px">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

@@ -132,8 +132,8 @@ elseif (isset($_POST['agregarCarrito']))//Valida si se envía el formulario
 
     include_once 'carrito.php';
     $carrito = new carrito();
-    $carrito->setLibroId($_POST['libro_id']);
-    $carrito->setClienteId($_POST['usuario_id']);
+    $carrito->setLibroId($_POST['idProducto']);
+    $carrito->setClienteId($_POST['idUsuario']);
     $carrito->setCantidad($_POST['cantidad']);
     $carrito->altaCarrito();
 
