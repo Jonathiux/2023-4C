@@ -90,10 +90,10 @@ private $direccion;
             $pdo = new Conexion();
             $query = $pdo->prepare("INSERT INTO usuario ("
                 . " nombre, usuario, contraseña, privilegios, telefono, direccion) values("
-                . " :nombre, :usuario, :password, :privilegios, :telefono, :direccion);");
+                . " :nombre, :usuario, :contraseña, :privilegios, :telefono, :direccion);");
             $query->bindValue(':nombre', $this->getNombre());
             $query->bindValue(':usuario', $this->getUsuario());
-            $query->bindValue(':password', $this->getContraseña());
+            $query->bindValue(':contraseña', $this->getContraseña());
             $query->bindValue(':privilegios', $this->getPrivilegios());
             $query->bindValue(':telefono', $this->getTelefono());
             $query->bindValue(':direccion', $this->getDireccion());

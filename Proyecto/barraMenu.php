@@ -16,9 +16,6 @@ class menu {
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Recomendaciones</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Productos
@@ -35,6 +32,9 @@ class menu {
                                  }*/
                                 ?>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="CarritoCons.php">Carrito</a>
                         </li>
                         </ul>
                     </ul>

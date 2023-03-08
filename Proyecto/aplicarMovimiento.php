@@ -23,11 +23,11 @@
 </head>
 <body>
 <?php
-/*
+
         include 'barraMenu.php';
         $menu = new menu();
         $menu ->barraMenu();
-*/
+
 date_default_timezone_set("America/Mexico_City");
 
 if (isset($_POST['ProductoAlta']))//Valida si se envía el formulario
@@ -68,7 +68,7 @@ if (isset($_POST['ProductoAlta']))//Valida si se envía el formulario
 }
 elseif (isset($_POST['ProductoModificarGuardar']))//Valida si se envía el formulario
 {
-print_r($_POST);
+//print_r($_POST);
 include_once 'Producto.php';
 $producto = new Producto();
 $producto->setIdProducto($_POST['idProducto']);
@@ -85,7 +85,10 @@ $producto->ProductoModificarGuardar();
     <div class="row justify-content-md-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-auto">
-            <img src="imgs/mario.jpg" height="80px" width="40px">El registro se actualizó correctamente</div>
+            <h3>El registro se actualizó correctamente</h3>
+            <div class="text-center">
+            <img src="imgs/Pacman.png" class="rounded" alt="" width="200px" height="200px">
+            </div>
         <div class="col col-lg-2"></div>
     </div>
     <div class="row justify-content-md-center">
@@ -99,11 +102,6 @@ $producto->ProductoModificarGuardar();
         <div class="col col-lg-2">
 
         </div>
-    </div>
-    <br>
-    <center><a href="areaConsulta.php?m=M" class="btn btn-default">Regresar</a>
-        <a href="index.php" class="btn btn-default">Salir</a></center>
-</div>
 <?php
 }
 elseif (isset($_POST['usuarioAlta']))//Valida si se envía el formulario
@@ -111,11 +109,14 @@ elseif (isset($_POST['usuarioAlta']))//Valida si se envía el formulario
 
     include_once 'usuario.php';
     $usuario = new usuario();
-    $usuario->setNombre($_POST['firstname']." ".$_POST['lastname']);
+    $usuario->setNombre($_POST['nombre']);
     $usuario->setUsuario($_POST['usuario']);
-    $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $usuario->setPassword($hashed_password);
-    $usuario->setPrivilegios('General');
+    $hashed_password = password_hash($_POST['contraseña'], PASSWORD_DEFAULT);
+    $usuario->setContraseña($hashed_password);
+    $usuario->setPrivilegios('1');
+    $usuario->setTelefono('telefono');
+    $usuario->setDireccion('direccion');
+
     $usuario->usuarioAlta();
 
 
@@ -129,11 +130,11 @@ elseif (isset($_POST['usuarioAlta']))//Valida si se envía el formulario
 }
 elseif (isset($_POST['agregarCarrito']))//Valida si se envía el formulario
 {
-
+    print_r($_POST);
     include_once 'carrito.php';
     $carrito = new carrito();
-    $carrito->setLibroId($_POST['idProducto']);
-    $carrito->setClienteId($_POST['idUsuario']);
+    $carrito->setIdProducto($_POST['idProducto']);
+    $carrito->setIdUsuario($_POST['1']);
     $carrito->setCantidad($_POST['cantidad']);
     $carrito->altaCarrito();
 
@@ -149,5 +150,36 @@ elseif (isset($_POST['agregarCarrito']))//Valida si se envía el formulario
         </p>
     </div>
     <?php
+}
+elseif (isset($_POST['ProductoEliminar']))//Valida si se envía el formulario
+{
+include_once 'Producto.php';
+$producto = new Producto();
+$producto->setIdProducto($_POST['idProducto']);
+$producto->bajaProducto();
+
+
+?>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-2"></div>
+            <h3 class="text-center">El registro se actualizó correctamente</h3>
+            <div class="text-center">
+            <img src="imgs/Pacman.png" class="rounded" alt="" width="200px" height="200px">
+            <br>
+            </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-2">
+
+        </div>
+        <div class="col-md-auto">
+            <a href="editorialConsulta.php" class="btn btn-primary">Regresar</a>
+            <a href="index.php" class="btn btn-danger">Salir</a>
+        </div>
+        <div class="col col-lg-2">
+
+        </div>
+<?php
 }
 ?>

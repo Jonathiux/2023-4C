@@ -4,7 +4,7 @@ include_once 'conexion.php';
 
 class carrito {
     private $idCarrito;
-    private $idProd;
+    private $idProducto;
     private $idUsuario;
     private $cantidad;
     private $activo;
@@ -30,14 +30,14 @@ class carrito {
         $this->activo = $Activo;
     }
 
-    public function getIdProd()
+    public function getIdProducto()
     {
-        return $this->idProd;
+        return $this->idProducto;
     }
 
-    public function setIdProd($idProd)
+    public function setIdProducto($idProducto)
     {
-        $this->idProd = $idProd;
+        $this->idProducto = $idProducto;
     }
 
   
@@ -62,8 +62,8 @@ class carrito {
     }
     public function altaCarrito(){
         $pdo = new Conexion();
-        $query = $pdo->prepare('INSERT INTO carrito(idProd, idUsuario, cantidad) VALUES (:idProd, :idUsuario, :cantidad);');
-        $query->bindValue(':idProd', $this->getIdProd());
+        $query = $pdo->prepare('INSERT INTO carrito(idProducto, idUsuario, cantidad) VALUES (:idProducto, :idUsuario, :cantidad);');
+        $query->bindValue(':idProducto', $this->getIdProducto());
         $query->bindValue(':idUsuario', $this->getIdUsuario());
         $query->bindValue(':cantidad', $this->getCantidad());
         $query->execute();
@@ -77,6 +77,31 @@ class carrito {
         $query->execute();
 
         $pdo = null;
+    }
+
+    function Consulta() {
+
+        $pdo = new Conexion();
+        $query = $pdo->prepare('SELECT p.nombre, p.precio, c.idCarrito, c.cantidad FROM Carrito c 
+        Join producto p on c.idProducto = p.idProducto WHERE activo=1;');
+        $query->execute();
+        
+        
+        $resultado = $query->fetchAll();
+        
+        foreach ($resultado as $key => $value) {
+        $Eliminar='<a href="quitarElemento.php?idCarrito='.$value['idCarrito'].'" class="btn btn-danger m-2">Eliminar</a>';
+          $Producto[$key] = array(
+                $value['idCarrito'],
+                $value['nombre'],   
+                $value['precio'],
+                $value['cantidad'],
+                $Eliminar
+            );
+        }
+ 
+        return $Producto;
+
     }
 
 }

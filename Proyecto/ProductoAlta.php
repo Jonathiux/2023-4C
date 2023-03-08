@@ -1,4 +1,5 @@
 <?php
+include 'loginSecurity.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">

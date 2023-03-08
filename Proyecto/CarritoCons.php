@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <?php
 //include 'loginSecurity.php';
-/*
-if ($_SESSION['privilegios'] != 'admin') {
+/*if ($_SESSION['privilegios'] != 'admin') {
     header('location: index.php');
 }
 */
-include_once 'producto.php';
-$Producto = new producto();
+include_once 'Carrito.php';
+$Carrito = new carrito();
 
 ?>
 <html lang="es">
@@ -39,7 +38,7 @@ $Producto = new producto();
 
         <div class="container-fluid">
             <div class="page-header">
-                <h3 style="text-align: center"><p>Listado de Productos</p></h3>
+                <h3 style="text-align: center"><p>Carrito</p></h3>
                 <div style="text-align: center">
                     <img src="imgs/logo.jpg" alt="" height="300px" width="300px">
                 </div>
@@ -51,10 +50,8 @@ $Producto = new producto();
                 <table id="dtPlantilla" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>IdProducto</th>
-                            <th>IdCat</th>
+                            <th>IdCarrito</th>
                             <th>Nombre</th>
-                            <th>Descripción</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
                             <th>Acciones</th>
@@ -71,7 +68,7 @@ $Producto = new producto();
         </div>
 
         <script>
-            var arregloDT = <?php echo json_encode($Producto->ProductoConsulta()); ?>;
+            var arregloDT = <?php echo json_encode($Carrito->Consulta()); ?>;
             $(document).ready(function(){
                 var t = 'Listado de Cuentas';
                 $('#dtPlantilla').DataTable( {
